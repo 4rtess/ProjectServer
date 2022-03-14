@@ -3,13 +3,15 @@ package com.example.ProjectServer.controllers;
 import com.example.ProjectServer.parser.VolgeduParser;
 import com.example.ProjectServer.entity.Day;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@Tag(name = "Parser controller.",
+     description = "Get timetable and maybe something else in perspective.")
 @RestController
 public class MainController {
 
@@ -20,15 +22,14 @@ public class MainController {
     }
 
 
-    // GET, чтобы с браузера посмотреть, потом в post
+    // BEGIN OF THE DOCUMENTATION
+    @Operation(summary = "Get timetable",
+               description = "Get timetable and return as json")
+    //END OF THE DOCUMENTATION
     @GetMapping("/getDays")
     public List<Day> getDays(@RequestParam String username, @RequestParam String password) {
         List<Day> days = parser.getDays(username,password);
-        days.forEach(day -> {
-            System.out.println(day.getDayOfWeek());
-            day.getLessons().forEach(l->System.out.println("    "+l.toString()));
-            System.out.println("===========");
-        });
         return days;
     }
+
 }

@@ -8,7 +8,7 @@ public class ProjectServerApplication {
 
 	public static void main(String[] args) {
 
-		System.setProperty("webdriver.chrome.driver", "src/main/resources/templates/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "src/main/resources/static/chromedriver.exe");
 		SpringApplication.run(ProjectServerApplication.class, args);
 	}
 

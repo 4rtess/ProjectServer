@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Days</title>
+
+        <style type="text/css">
+        table, th, tr, td {
+            border: 1px solid black;
+            padding: 0.5em;
+        }
+        </style>
+
+        <script>
+              function setCookies() {
+                  let username = document.getElementById('username').value;
+                  let password = document.getElementById('password').value;
+                  document.getElementById("info").innerText = "Подождите чуток, собираем информацию...";
+                  document.cookie = "username="+username;
+                  document.cookie = "password="+password;
+              }
+        </script>
+    </head>
+    <body>
+    <div>
+        <h2>Обновить расписание</h2>
+        <form method="post" action="/getDays">
+            <input id="username" type="text", name ="username" placeholder="username"/>
+            <input id="password" type="password", name ="password" placeholder="password"/>
+            <button type="submit" onclick="setCookies()">Обновить</button>
+        </form>
+        <p id = "info"></p>
+    </div>
+    <div>
+
+        <table>
+            <tr>
+                <td align="center">№</td>
+                <td align="center">Урок</td>
+                <td align="center">Время</td>
+                <td align="center">Кабинет</td>
+                <td align="center">Домашнее задание</td>
+            </tr>
+            {{#days}}
+            <tr>
+                <td align="center" colspan="5"><h3>{{dayOfWeek}}</h3></td>
+            </tr>
+                {{#lessons}}
+            <tr>
+                <td><i>{{num}}</i></td>
+                <td>{{lessonName}}</td>
+                <td>{{time}}</td>
+                <td>{{room}}</td>
+                <td>{{homework}}</td>
+
+            </tr>
+                {{/lessons}}
+            {{/days}}
+        </table>
+    </div>
+    <div>
+        <p>Сайт использует куки, чтобы каждый раз не авторизироваться.</p>
+    </div>
+    </body>
+</html>

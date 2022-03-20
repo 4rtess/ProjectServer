@@ -13,22 +13,16 @@ import java.util.List;
 
 public class VolgeduParser {
 
-    private static VolgeduParser instance;
     private WebDriver driver;
 
-    private  VolgeduParser() {}
 
     /** Singleton because site, which should be parsed, very-very bad. It can crash, when 200 users use it...
      * And this project for me.
      * In plans were create android app, where I can see school timetable and homework, without login into e-diary. **/
-    public static VolgeduParser getInstance() {
-        if(instance==null) {
-            instance = new VolgeduParser();
+    public VolgeduParser() {
             ChromeOptions opt = new ChromeOptions();
             opt.addArguments("--headless");
-            instance.driver=new ChromeDriver(opt);
-        }
-        return instance;
+            driver = new ChromeDriver(opt);
     }
     public List<Day> getDays(String username,String password) {
         login(driver,username,password);
@@ -91,8 +85,11 @@ public class VolgeduParser {
         String dayOfWeek="";
         for (WebElement daysTable : daysTables) {
 
-            WebElement dayOfWeekEl = daysTable.findElement(By.xpath(".//td[contains(@class,'day_name hidden-mobile')]"));
-            dayOfWeek = dayOfWeekEl.getText().substring(0, dayOfWeekEl.getText().indexOf(','));
+            WebElement dayOfWeekEl = daysTable.findElement(By.xpath(".//td[contains(@rowspan, '10')]"));
+            System.out.println(dayOfWeekEl.getText());
+            try {dayOfWeek = dayOfWeekEl.getText().substring(0, dayOfWeekEl.getText().indexOf(','));}
+            catch (Exception e) {dayOfWeek="Понедельник";}
+
 
 
             List<WebElement> tr = daysTable.findElements(By.xpath(".//tr"));
@@ -112,7 +109,19 @@ public class VolgeduParser {
                 lesson.add(td.get(i).getText());
             }
             for (int i = 2; i < td.size(); i += 4) {
-                homework.add(td.get(i).getText());
+                String homeworkText = td.get(i).getText();
+                if(homeworkText.contains("смотри")) {
+                    td.get(i).click();
+                    for(int l = 0;l<200;l++) {
+                        if(driver.findElement(By.xpath("//div[contains(@class, 'modal-header')]"))
+                            .getText().equals("Информация о задании")) {
+                            break;
+                        }
+                    }
+                    homeworkText +="\n Подробности от учителя:"+ driver.findElement(By.xpath("//div[contains(@class, 'form-group ng-scope')][1]/div")).getText();
+                    driver.findElement(By.xpath("//div[@class='bootstrap-dialog-close-button']/button[@class='close']")).click();
+                }
+                homework.add(homeworkText);
             }
 
             List<Lesson> lessons = new ArrayList<>();
@@ -144,6 +153,7 @@ public class VolgeduParser {
                 agree.click();
             }catch (Exception ignored) {}
         }
+        driver.quit();
     }
 
 }

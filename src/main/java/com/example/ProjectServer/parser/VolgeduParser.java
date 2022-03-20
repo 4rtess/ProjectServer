@@ -22,13 +22,20 @@ public class VolgeduParser {
             driver = new ChromeDriver(opt);
     }
     public List<Day> getDays(String username,String password) {
-        login(driver,username,password);
-        diary(driver);
-        return getTable(driver);
+        if(login(driver,username,password))
+        {
+            diary(driver);
+            return getTable(driver);
+        } else {
+            return new ArrayList<>();
+        }
     }
 
-    /** Log in **/
-    private void login(WebDriver driver, String username, String password) {
+    /** Log in
+     * true - login normaly
+     * false - get exception
+     **/
+    private boolean login(WebDriver driver, String username, String password) {
         driver.get("https://sgo.volganet.ru/about.html");
         while(true) {
             try {
@@ -60,8 +67,14 @@ public class VolgeduParser {
             if (driver.getCurrentUrl().equals("https://sgo.volganet.ru/asp/SecurityWarning.asp")) {
                 WebElement next = driver.findElement(By.xpath("//button[contains(@title, 'Продолжить')]"));
                 next.click();
-            }
+            }try {
+                if (driver.findElement(By.xpath("//div[contains(@class,'bootstrap-dialog-message')]")).getText()
+                        .contains("Неправильный пароль или логин")) {
+                    return false;
+                }
+            }catch (Exception e) {}
         }
+        return true;
     }
 
     /** Open diary **/

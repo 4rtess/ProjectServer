@@ -31,7 +31,11 @@ public class MainController {
             return "day";
         VolgeduParser parser = new VolgeduParser();
         List<Day> days = parser.getDays(username, password);
-        model.put("days", days);
+        if(days.isEmpty()) {
+            model.put("exception", "Неверный логин и/или пароль");
+        } else {
+            model.put("days", days);
+        }
         return "day";
     }
 
@@ -46,7 +50,11 @@ public class MainController {
         if(!username.equals("") && !password.equals("")) {
             VolgeduParser parser = new VolgeduParser();
             List<Day> days = parser.getDays(username, password);
-            model.put("days", days);
+            if(days.isEmpty()) {
+                model.put("exception", "Неверный логин и/или пароль");
+            } else {
+                model.put("days", days);
+            }
             System.out.println("--> PUT MODELS");
         }
         return "day";

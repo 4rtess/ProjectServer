@@ -5,10 +5,13 @@
         <title>Days</title>
 
         <style type="text/css">
-        table, th, tr, td {
-            border: 1px solid black;
-            padding: 0.5em;
-        }
+            table, th, tr, td {
+                border: 1px solid black;
+                padding: 0.5em;
+            }
+            .exception {
+                color: red;
+            }
         </style>
 
         <script>
@@ -30,6 +33,9 @@
             <button type="submit" onclick="setCookies()">Обновить</button>
         </form>
         <p id = "info"></p>
+        {{#exception}}
+            <p class="exception">{{exception}}</p>
+        {{/exception}}
     </div>
     <div>
 

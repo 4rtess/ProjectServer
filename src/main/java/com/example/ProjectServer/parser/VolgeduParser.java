@@ -15,10 +15,7 @@ public class VolgeduParser {
 
     private WebDriver driver;
 
-
-    /** Singleton because site, which should be parsed, very-very bad. It can crash, when 200 users use it...
-     * And this project for me.
-     * In plans were create android app, where I can see school timetable and homework, without login into e-diary. **/
+    
     public VolgeduParser() {
             ChromeOptions opt = new ChromeOptions();
             opt.addArguments("--headless");

@@ -110,17 +110,19 @@ public class VolgeduParser {
             }
             for (int i = 2; i < td.size(); i += 4) {
                 String homeworkText = td.get(i).getText();
-                if(homeworkText.contains("смотри")) {
-                    td.get(i).click();
-                    for(int l = 0;l<200;l++) {
-                        if(driver.findElement(By.xpath("//div[contains(@class, 'modal-header')]"))
-                            .getText().equals("Информация о задании")) {
-                            break;
+                try {
+                    if (homeworkText.contains("смотри")) {
+                        td.get(i).click();
+                        for (int l = 0; l < 200; l++) {
+                            if (driver.findElement(By.xpath("//div[contains(@class, 'modal-header')]"))
+                                    .getText().equals("Информация о задании")) {
+                                break;
+                            }
                         }
+                        homeworkText += "\n Подробности от учителя:" + driver.findElement(By.xpath("//div[contains(@class, 'form-group ng-scope')][1]/div")).getText();
+                        driver.findElement(By.xpath("//div[@class='bootstrap-dialog-close-button']/button[@class='close']")).click();
                     }
-                    homeworkText +="\n Подробности от учителя:"+ driver.findElement(By.xpath("//div[contains(@class, 'form-group ng-scope')][1]/div")).getText();
-                    driver.findElement(By.xpath("//div[@class='bootstrap-dialog-close-button']/button[@class='close']")).click();
-                }
+                }catch (Exception e ) {}
                 homework.add(homeworkText);
             }
 

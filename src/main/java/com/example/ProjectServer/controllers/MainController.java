@@ -23,7 +23,8 @@ public class MainController {
 
     // BEGIN OF THE DOCUMENTATION
     @Operation(summary = "Get timetable",
-               description = "Get timetable and return as json")
+               description = "Get timetable+homework and return it in day.mustache if user have cookie\n" +
+                       "else return empty table")
     //END OF THE DOCUMENTATION
     @GetMapping("/getDays")
     public String getDays(@CookieValue(name = "username", defaultValue = "", required = false) String username,
@@ -38,6 +39,11 @@ public class MainController {
         return "day";
     }
 
+    // BEGIN OF THE DOCUMENTATION
+    @Operation(summary = "Get timetable+homework",
+            description = "Get timetable+homework and return it in day.mustache.\n" +
+                    "Get username and password via form")
+    //END OF THE DOCUMENTATION
     @PostMapping("/getDays")
     public String getDaysPost(@RequestParam String username, @RequestParam String password, Map<String, Object> model) {
         System.out.println(String.format("-->%s\n-->%s",username,password));

@@ -1,17 +1,13 @@
-package com.example.ProjectServer.controllers;
+package com.example.ProjectServer.controller;
 
 import com.example.ProjectServer.parser.VolgeduParser;
 import com.example.ProjectServer.entity.Day;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 

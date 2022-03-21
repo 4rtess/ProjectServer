@@ -157,8 +157,8 @@ public class VolgeduParser {
         return days;
     }
     private void leave(WebDriver driver) {
-        WebElement leave = driver.findElement(By.xpath("//span[contains(@title, 'Выход')]"));
-        leave.click();
+        WebElement leave = driver.findElement(By.xpath("//a[contains(@href,'JavaScript:Logout(true);')]"));
+        try{leave.click();}catch (Exception e) {}
         for(int i=0;i<100;i++) {
             try {
                 WebElement agree = driver.findElement(By.xpath("//button[contains(text(),'Да')]"));

@@ -1,6 +1,6 @@
 # ProjectServer
 School timetable parser
-10 class proect.
+10 class project.
 
 To start project
 1) cd /out/artifacts/ProjectServer_jar

@@ -1,0 +1,32 @@
+Manifest-Version: 1.0
+Main-Class: com.example.ProjectServer.ProjectServerApplication
+Class-Path: spring-web-5.3.15.jar jackson-datatype-jsr310-2.13.1.jar gua
+ va-25.0-jre.jar logback-core-1.2.10.jar spring-boot-devtools-2.6.3.jar 
+ selenium-opera-driver-3.141.59.jar spring-aop-5.3.15.jar spring-boot-st
+ arter-tomcat-2.6.3.jar spring-boot-starter-2.6.3.jar spring-expression-
+ 5.3.15.jar swagger-models-2.1.11.jar spring-boot-starter-json-2.6.3.jar
+  jackson-dataformat-yaml-2.13.1.jar jackson-module-parameter-names-2.13
+ .1.jar selenium-remote-driver-3.141.59.jar jackson-annotations-2.13.1.j
+ ar log4j-to-slf4j-2.17.1.jar swagger-annotations-2.1.10.jar checker-com
+ pat-qual-2.0.0.jar webjars-locator-core-0.48.jar log4j-api-2.17.1.jar c
+ ommons-exec-1.3.jar swagger-core-2.1.11.jar classgraph-4.8.69.jar sprin
+ g-core-5.3.15.jar springdoc-openapi-webmvc-core-1.5.11.jar okhttp-3.14.
+ 9.jar jackson-databind-2.13.1.jar snakeyaml-1.29.jar animal-sniffer-ann
+ otations-1.14.jar selenium-support-3.141.59.jar commons-lang3-3.12.0.ja
+ r spring-boot-starter-mustache-2.6.3.jar byte-buddy-1.11.22.jar jakarta
+ .validation-api-2.0.2.jar selenium-api-3.141.59.jar selenium-chrome-dri
+ ver-3.141.59.jar spring-boot-2.6.3.jar swagger-integration-2.1.11.jar j
+ ackson-datatype-jdk8-2.13.1.jar spring-boot-starter-web-2.6.3.jar jakar
+ ta.xml.bind-api-2.3.3.jar okio-1.14.0.jar slf4j-api-1.7.33.jar selenium
+ -firefox-driver-3.141.59.jar selenium-java-3.141.59.jar tomcat-embed-co
+ re-9.0.56.jar tomcat-embed-el-9.0.56.jar logback-classic-1.2.10.jar spr
+ ing-boot-autoconfigure-2.6.3.jar jakarta.annotation-api-1.3.5.jar j2obj
+ c-annotations-1.1.jar jmustache-1.15.jar selenium-safari-driver-3.141.5
+ 9.jar spring-webmvc-5.3.15.jar jakarta.activation-api-1.2.2.jar jackson
+ -core-2.13.1.jar tomcat-embed-websocket-9.0.56.jar spring-beans-5.3.15.
+ jar jsr305-1.3.9.jar selenium-edge-driver-3.141.59.jar lombok-1.18.22.j
+ ar selenium-ie-driver-3.141.59.jar spring-boot-starter-logging-2.6.3.ja
+ r spring-context-5.3.15.jar springdoc-openapi-common-1.5.11.jar swagger
+ -ui-3.52.3.jar error_prone_annotations-2.1.3.jar springdoc-openapi-ui-1
+ .5.11.jar jul-to-slf4j-1.7.33.jar spring-jcl-5.3.15.jar
+
